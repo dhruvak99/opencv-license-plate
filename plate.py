@@ -44,5 +44,9 @@ new_image = cv2.bitwise_and(img,img,mask=mask)
 Cropped = gray[topx:bottomx+1, topy:bottomy+1]
 
 number = pytesseract.image_to_string(Cropped, config='--psm 11')
-print(number)
+new_number = ""
+for i in number:
+    if i.isalpha() or i.isdigit():
+        new_number+=i
+print(new_number)
 os._exit(0)
